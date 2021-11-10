@@ -8,9 +8,8 @@ function App() {
   return (
     <div>
       <Routes>
-        {/*  Pagina principala va fi cea de login*/}
-        <Route path={"/"} element={<Register/>}/>
-        <Route path={"/login"} element={<Login/>}/>
+        <Route path={"/"} element={<Login/>}/>
+        <Route path={"/register"} element={<Register/>}/>
       </Routes>
         <Outlet/>
     </div>

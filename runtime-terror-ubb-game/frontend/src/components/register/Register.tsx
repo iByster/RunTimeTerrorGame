@@ -40,7 +40,7 @@ function Register(props: any) {
                         title: 'Account created successfully!',
                         icon: "success"
                     }).then(() => {
-                        navigate("/login");
+                        navigate("/");
                     });
                 }
                 else
@@ -56,7 +56,7 @@ function Register(props: any) {
 
     function onUsernameChanged(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) {
         setUsername(event.target.value);
-        if(username.length<3)
+        if(username.length<2)
         {
             setUsernameError("Too short username provided.");
         }
