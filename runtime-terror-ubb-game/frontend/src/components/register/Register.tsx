@@ -22,7 +22,7 @@ function Register(props: any) {
             showCancelButton: true,
             confirmButtonColor: '#006200',
             cancelButtonColor: '#b20000'
-        }).then(r => {
+        }).then((r: { isConfirmed: any; }) => {
             if(r.isConfirmed)
             {
                 //Trebuie facuta verificarea datelor pe frontend si backend
@@ -39,7 +39,7 @@ function Register(props: any) {
                     Swal.fire({
                         title: 'Account created successfully!',
                         icon: "success"
-                    }).then(r => {
+                    }).then(() => {
                         navigate("/login");
                     });
                 }
