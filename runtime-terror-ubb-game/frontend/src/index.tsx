@@ -5,6 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import App from "./App";
 import {BrowserRouter} from "react-router-dom";
 
+import './fonts/Early_GameBoy.ttf'
+
 ReactDOM.render(
   <React.StrictMode>
       <BrowserRouter>

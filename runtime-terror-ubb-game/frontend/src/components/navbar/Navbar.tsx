@@ -5,6 +5,8 @@ import React from "react";
 import "./Navbar.css"
 import logo from "../../static/img/logo_en2.png"
 import avatar from "../../static/img/avatar.png"
+import explosion from "../../static/img/pixel_explosion1.png"
+import flags from "../../static/img/flags_v1.png"
 
 export interface NavbarProps{
     name: String
@@ -36,19 +38,20 @@ export const Navbar: React.FC<NavbarProps> = ({name}) => {
                             boxShadow: 'rgba(0, 0, 0, 0.35) 0px -20px 30px -30px inset',
                             }}>
                     </Box>
-                    <Box
+                    {/* <Box
                         sx={{
                             borderBottomLeftRadius: '100%',
                             width: 1/5,
                             bgcolor: 'white',
                             }}>
-                    </Box>
+                    </Box> */}
+                    <img src={explosion} alt="No explosion"/>
                     <Box
                         sx={{
                             width: 1,
                             bgcolor: 'white',
                             }}>
-                        <p style={{position: "relative", float: "right", marginRight:60}}> Here goes your {name}.</p> 
+                        <p style={{position: "relative", float: "right", marginRight:60, fontFamily: "EarlyGameBoy"}}> Here goes your {name}.</p> 
                     </Box>  
                 </Box>  
                 <img src={avatar} alt="Avatar" width="39" height="39" style={{border:"2px solid lightgrey",position:"absolute", right: 10, top: 0, borderRadius:'50%'}}/>
@@ -64,11 +67,11 @@ export const Navbar: React.FC<NavbarProps> = ({name}) => {
                     
                 }}>
                 <Link to="/">
-                    <Box sx={{position: "static", float: "left", marginLeft: 15, top: 0,
+                    <Box sx={{position: "static", float: "left", marginLeft: 18, top: 0,
                             ':hover': {
                                 bgcolor: 'background.paper',
                               }}}>
-                        <Button variant="text" style={{color:'#86D7FF', fontWeight: 'bold'}}>Homepage</Button>
+                        <Button variant="text" style={{color:'#86D7FF', fontWeight: 'bold', fontFamily: "EarlyGameBoy"}}>Homepage</Button>
                     </Box>
                 </Link>
                 <Link to="/leaderboard">
@@ -76,7 +79,7 @@ export const Navbar: React.FC<NavbarProps> = ({name}) => {
                             ':hover': {
                                 bgcolor: 'background.paper',
                               }}}>
-                        <Button variant="text" style={{color:'#86D7FF', fontWeight: 'bold'}}>Leaderboards</Button>
+                        <Button variant="text" style={{color:'#86D7FF', fontWeight: 'bold', fontFamily: "EarlyGameBoy"}}>Leaderboards</Button>
                     </Box>
                 </Link>
                 <Link to="/levels">
@@ -84,10 +87,11 @@ export const Navbar: React.FC<NavbarProps> = ({name}) => {
                             ':hover': {
                                 bgcolor: 'background.paper',
                               }}}>
-                        <Button variant="text" style={{color:'#86D7FF', fontWeight: 'bold'}}>Level</Button>
+                        <Button variant="text" style={{color:'#86D7FF', fontWeight: 'bold', fontFamily: "EarlyGameBoy"}}>Levels</Button>
                     </Box>
                 </Link>
             </Box>
+            <img src={flags} alt="No flags" width="200" height="100" style={{position:'absolute', right:0}}/>
         </Box>
         </ThemeProvider>
     );
