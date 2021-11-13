@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version "2.0.1.RELEASE"
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'idea'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.springframework.boot'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+bootJar {
+    mainClassName = 'java/ServerMain.java'
+}
+
+springBoot {
+    mainClassName = 'java/ServerMain.java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    compileOnly 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.6'
+    compileOnly 'org.springframework.boot:spring-boot-starter-web:2.5.6'
+    compileOnly 'org.springframework.boot:spring-boot:2.5.6'
+    compileOnly 'org.springframework.boot:spring-boot-autoconfigure:2.5.6'
+    compileOnly 'org.springframework.boot:spring-boot-test:2.5.6'
+
+   compileOnly 'org.springframework.boot:spring-boot-gradle-plugin:2.5.6'
+}
