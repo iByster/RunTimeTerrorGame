@@ -55,7 +55,8 @@ export default function Login() {
 
     return (
         <Box component={"form"}
-             id={"loginForm"}
+             id={"login"}
+             className={"form"}
              sx={{
                  width: 500,
                  height: 350
