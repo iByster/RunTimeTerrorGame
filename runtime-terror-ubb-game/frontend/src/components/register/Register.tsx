@@ -104,7 +104,7 @@ function Register() {
             <TextField className={"input"} error={emailError.length>0} helperText={emailError} onChange={(text)=>setEmail(text.target.value)} label={"Email"} variant={"outlined"}/>
             <TextField className={"input"} error={passwordError.length>0} helperText={passwordError} onChange={(text)=>setPassword(text.target.value)} label={"Password"} variant={"outlined"} type={"password"}/>
             <Button className={"input"} variant={"outlined"} onClick={onRegisterButtonClicked}>Create account</Button>
-            <span>Already have an account? <Button className={"input"} variant={"outlined"} onClick={onLoginButtonClicked}>Sign in</Button></span>
+            <div style={{display: "inline-flex", flexDirection: "row", alignItems: "baseline"}}>Already have an account? <Button className={"input"} variant={"outlined"} onClick={onLoginButtonClicked} style={{marginLeft: "10px"}}>Sign in</Button></div>
         </Box>
     );
 }
