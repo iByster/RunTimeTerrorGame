@@ -1,6 +1,5 @@
 import {Box, Button, TextField} from "@material-ui/core";
 import Swal from "sweetalert2";
-import "./Register.css"
 import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
