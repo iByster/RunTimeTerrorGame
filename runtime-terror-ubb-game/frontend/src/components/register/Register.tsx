@@ -38,7 +38,7 @@ function Register() {
 
     function validatePassword():boolean
     {
-        return validateField(password, /^[\S]{8,50}%/);
+        return validateField(password, /^[\S]{8,50}$/);
     }
 
     function onRegisterButtonClicked() {
