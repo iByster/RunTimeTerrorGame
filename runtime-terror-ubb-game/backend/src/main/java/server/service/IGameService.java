@@ -7,7 +7,7 @@ import java.util.List;
 @Service
 public interface IGameService {
     List<Player> findAllPlayers();
-    void save(Player player);
+    void savePlayerState(Player player);
     void update(Player player);
     void delete(Player player);
 }

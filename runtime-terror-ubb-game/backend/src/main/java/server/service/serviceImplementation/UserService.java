@@ -22,4 +22,13 @@ public class UserService {
         }
         return null;
     }
+
+    public User add(User user) {
+        try {
+            User u = userRepository.save(user);
+            return u;
+        } catch (EntityNotFoundException exception) {
+            return null;
+        }
+    }
 }
