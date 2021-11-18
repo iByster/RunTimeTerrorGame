@@ -90,21 +90,24 @@ function Register() {
     }
 
     return (
-        <Box component={"form"}
-             id={"register"}
-             className={"form"}
-             sx={{
-                 width: 500,
-                 height: 500
-             }}
-        >
-            <h2>Register</h2>
-            <TextField className={"input"} error={usernameError.length>0} helperText={usernameError} onChange={(text)=>setUsername(text.target.value)} label={"Username"} variant={"outlined"}/>
-            <TextField className={"input"} error={emailError.length>0} helperText={emailError} onChange={(text)=>setEmail(text.target.value)} label={"Email"} variant={"outlined"}/>
-            <TextField className={"input"} error={passwordError.length>0} helperText={passwordError} onChange={(text)=>setPassword(text.target.value)} label={"Password"} variant={"outlined"} type={"password"}/>
-            <Button className={"input"} variant={"outlined"} onClick={onRegisterButtonClicked}>Create account</Button>
-            <div style={{display: "inline-flex", flexDirection: "row", alignItems: "baseline"}}>Already have an account? <Button className={"input"} variant={"outlined"} onClick={onLoginButtonClicked} style={{marginLeft: "10px"}}>Sign in</Button></div>
-        </Box>
+        <div
+            className={"formparent"}>
+            <Box component={"form"}
+                 id={"register"}
+                 className={"form"}
+                 sx={{
+                     width: 500,
+                     height: 500
+                 }}
+            >
+                <h2>Register</h2>
+                <TextField className={"input"} error={usernameError.length>0} helperText={usernameError} onChange={(text)=>setUsername(text.target.value)} label={"Username"} variant={"outlined"}/>
+                <TextField className={"input"} error={emailError.length>0} helperText={emailError} onChange={(text)=>setEmail(text.target.value)} label={"Email"} variant={"outlined"}/>
+                <TextField className={"input"} error={passwordError.length>0} helperText={passwordError} onChange={(text)=>setPassword(text.target.value)} label={"Password"} variant={"outlined"} type={"password"}/>
+                <Button className={"input"} variant={"outlined"} onClick={onRegisterButtonClicked}>Create account</Button>
+                <div style={{display: "inline-flex", flexDirection: "row", alignItems: "baseline"}}>Already have an account? <Button className={"input"} variant={"outlined"} onClick={onLoginButtonClicked} style={{marginLeft: "10px"}}>Sign in</Button></div>
+            </Box>
+        </div>
     );
 }
 

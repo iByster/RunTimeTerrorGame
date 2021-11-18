@@ -12,9 +12,15 @@ code {
     monospace;
 }
 
+:root
+{
+  --albastru-ubb: #004174;
+}
+
 /*Register and login interfaces*/
 .form#register, .form#login
 {
+  box-shadow: black 5px 5px;
   border: 2px black solid;
   border-radius: 5px;
   margin: 0;
@@ -47,4 +53,10 @@ code {
 .form .input
 {
   margin-bottom: 15px;
+}
+
+.formparent
+{
+  height: 100vh;
+  width: 100vw;
 }
