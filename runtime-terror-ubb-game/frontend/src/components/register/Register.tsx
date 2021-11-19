@@ -118,7 +118,7 @@ function Register() {
                 <div className={"banner"}>
                     <div>
                         {/*Left side*/}
-                        
+
                     </div>
                     {/*Center piece*/}
                     <h1 className={"gametitle"}>UBB Game</h1>
