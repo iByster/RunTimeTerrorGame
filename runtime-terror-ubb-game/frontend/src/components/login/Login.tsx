@@ -67,19 +67,22 @@ export default function Login() {
     }
 
     return (
-        <Box component={"form"}
-             id={"login"}
-             className={"form"}
-             sx={{
-                 width: 500,
-                 height: 350
-             }}
-        >
-            <h2>Login</h2>
-            <TextField className={"input"} error={usernameError.length>0} helperText={usernameError} onChange={(text)=>setUsername(text.target.value)} label={"Username or Email"} variant={"outlined"}/>
-            <TextField className={"input"} error={passwordError.length>0} helperText={passwordError} onChange={(text)=>setPassword(text.target.value)} label={"Password"} variant={"outlined"} type={"password"}/>
-            <Button className={"input"} variant={"outlined"} onClick={onLoginButtonClicked}>Sign in</Button>
-            <div style={{display: "inline-flex", flexDirection: "row", alignItems: "baseline"}}>Don't have an account?<Button className={"input"} variant={"outlined"} onClick={onRegisterButtonClicked} style={{marginLeft: "10px"}}>Create account</Button></div>
-        </Box>
+        <div
+            className={"formparent"}>
+            <Box component={"form"}
+                 id={"login"}
+                 className={"form"}
+                 sx={{
+                     width: 500,
+                     height: 350
+                 }}
+            >
+                <h2 className={"formTitle"}>Login</h2>
+                <TextField className={"input"} error={usernameError.length>0} helperText={usernameError} onChange={(text)=>setUsername(text.target.value)} label={"Username or Email"} variant={"outlined"}/>
+                <TextField className={"input"} error={passwordError.length>0} helperText={passwordError} onChange={(text)=>setPassword(text.target.value)} label={"Password"} variant={"outlined"} type={"password"}/>
+                <Button className={"input"} variant={"outlined"} onClick={onLoginButtonClicked}>Sign in</Button>
+                <div style={{display: "inline-flex", flexDirection: "row", alignItems: "baseline"}}>Don't have an account?<Button className={"input"} variant={"outlined"} onClick={onRegisterButtonClicked} style={{marginLeft: "10px"}}>Create account</Button></div>
+            </Box>
+        </div>
     );
 }

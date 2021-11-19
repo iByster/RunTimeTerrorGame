@@ -2,6 +2,7 @@ import {Box, Button, TextField} from "@material-ui/core";
 import Swal from "sweetalert2";
 import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 function Register() {
     const [usernameError, setUsernameError] = useState('');
@@ -13,11 +14,14 @@ function Register() {
     const [passwordError, setPasswordError] = useState('');
     const [password, setPassword] = useState('');
 
+    const [confirmedPasswordError, setConfirmedPasswordError] = useState('');
+    const [confirmedPassword, setConfirmedPassword] = useState('');
+
     const anyError = useRef(false);
     const navigate = useNavigate();
 
     function resetErrorFlags() {
-        const errorSetters = [setUsernameError, setEmailError, setPasswordError];
+        const errorSetters = [setUsernameError, setEmailError, setPasswordError, setConfirmedPasswordError];
         errorSetters.forEach(val=>val(''));
         anyError.current = false;
     }
@@ -38,6 +42,10 @@ function Register() {
     function validatePassword():boolean
     {
         return validateField(password, /^[\S]{8,50}$/);
+    }
+
+    function validateConfirmedPassword() {
+        return password === confirmedPassword;
     }
 
     function onRegisterButtonClicked() {
@@ -66,6 +74,12 @@ function Register() {
                 if(!validatePassword())
                 {
                     setPasswordError("Password should be between 8 and 50 characters long!");
+                    anyError.current = true;
+                }
+                if(!validateConfirmedPassword())
+                {
+                    setConfirmedPasswordError("Passwords should match!");
+                    setPasswordError("Passwords should match!");
                     anyError.current = true;
                 }
                 if (!anyError.current) {
@@ -100,10 +114,11 @@ function Register() {
                      height: 500
                  }}
             >
-                <h2>Register</h2>
-                <TextField className={"input"} error={usernameError.length>0} helperText={usernameError} onChange={(text)=>setUsername(text.target.value)} label={"Username"} variant={"outlined"}/>
-                <TextField className={"input"} error={emailError.length>0} helperText={emailError} onChange={(text)=>setEmail(text.target.value)} label={"Email"} variant={"outlined"}/>
-                <TextField className={"input"} error={passwordError.length>0} helperText={passwordError} onChange={(text)=>setPassword(text.target.value)} label={"Password"} variant={"outlined"} type={"password"}/>
+                <h2 className={"formTitle"}>Register</h2>
+                <TextField className={"input"} error={usernameError.length>0} helperText={usernameError.length>0?<span><ErrorOutlineIcon/>{usernameError}</span>:""} onChange={(text)=>setUsername(text.target.value)} label={"Username"} variant={"outlined"}/>
+                <TextField className={"input"} error={emailError.length>0} helperText={emailError.length>0?<span><ErrorOutlineIcon/>{emailError}</span>:""} onChange={(text)=>setEmail(text.target.value)} label={"Email"} variant={"outlined"}/>
+                <TextField className={"input"} error={passwordError.length>0} helperText={passwordError.length>0?<span><ErrorOutlineIcon/>{passwordError}</span>:""} onChange={(text)=>setPassword(text.target.value)} label={"Password"} variant={"outlined"} type={"password"}/>
+                <TextField className={"input"} error={confirmedPasswordError.length>0} helperText={confirmedPasswordError.length>0?<span><ErrorOutlineIcon/>{confirmedPasswordError}</span>:""} onChange={(text)=>setConfirmedPassword(text.target.value)} label={"Confirm password"} variant={"outlined"} type={"password"}/>
                 <Button className={"input"} variant={"outlined"} onClick={onRegisterButtonClicked}>Create account</Button>
                 <div style={{display: "inline-flex", flexDirection: "row", alignItems: "baseline"}}>Already have an account? <Button className={"input"} variant={"outlined"} onClick={onLoginButtonClicked} style={{marginLeft: "10px"}}>Sign in</Button></div>
             </Box>
