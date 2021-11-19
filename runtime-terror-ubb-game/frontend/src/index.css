@@ -82,3 +82,18 @@ code {
   justify-content: center;
   min-height: 100vh;
 }
+
+/*Banner - contine logo-urile aplicatiei*/
+.banner
+{
+  display: grid;
+  grid-template-columns: fit-content(25%) auto fit-content(25%);
+  width: inherit;
+  align-items: center;
+
+}
+
+.gametitle
+{
+  font-family: EarlyGameBoy, serif;
+}

@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import Logo from "../../img/logo-cs.png";
 
 function Register() {
     const [usernameError, setUsernameError] = useState('');
@@ -114,6 +115,18 @@ function Register() {
                      height: 500
                  }}
             >
+                <div className={"banner"}>
+                    <div>
+                        {/*Left side*/}
+                        
+                    </div>
+                    {/*Center piece*/}
+                    <h1 className={"gametitle"}>UBB Game</h1>
+                    {/*Right side*/}
+                    <div>
+                        <img alt={"Sigla UBB"} src={Logo} width={100} height={100}/>
+                    </div>
+                </div>
                 <h2 className={"formTitle"}>Register</h2>
                 <TextField className={"input"} error={usernameError.length>0} helperText={usernameError.length>0?<span><ErrorOutlineIcon/>{usernameError}</span>:""} onChange={(text)=>setUsername(text.target.value)} label={"Username"} variant={"outlined"}/>
                 <TextField className={"input"} error={emailError.length>0} helperText={emailError.length>0?<span><ErrorOutlineIcon/>{emailError}</span>:""} onChange={(text)=>setEmail(text.target.value)} label={"Email"} variant={"outlined"}/>

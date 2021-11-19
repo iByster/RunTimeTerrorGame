@@ -2,6 +2,7 @@ import {Box, Button, TextField} from "@material-ui/core";
 import Swal from "sweetalert2";
 import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import Logo from "../../img/logo-cs.png";
 
 export default function Login() {
     const [usernameError, setUsernameError] = useState('');
@@ -25,7 +26,7 @@ export default function Login() {
     }
 
     function validateUsername():boolean {
-        if (/\@/.test(username)) {
+        if (/@/.test(username)) {
             return validateField(username,/^[a-zA-Z0-9]{1,50}@[a-zA-Z0-9]{1,50}.[a-zA-Z]{2,5}$/);
         }
         return validateField(username, /^[\S]{3,50}$/);
@@ -42,7 +43,7 @@ export default function Login() {
         resetErrorFlags();
         //Username
         if (!validateUsername()) {
-            if (/\@/.test(username)) {
+            if (/@/.test(username)) {
                 setUsernameError('Wrong email given. Example: smth@domain.com');
                 anyError.current = true;
             } else {
@@ -85,6 +86,18 @@ export default function Login() {
                      height: 350
                  }}
             >
+                <div className={"banner"}>
+                    <div>
+                        {/*Left side*/}
+                        <img alt={"Sigla UBB"} src={Logo} width={100} height={100}/>
+                    </div>
+                    {/*Center piece*/}
+                    <h1 className={"gametitle"}>UBB Game</h1>
+                    {/*Right side*/}
+                    <div>
+                        <img alt={"Sigla UBB"} src={Logo} width={100} height={100}/>
+                    </div>
+                </div>
                 <h2 className={"formTitle"}>Login</h2>
                 <TextField className={"input"} error={usernameError.length>0} helperText={usernameError} onChange={(text)=>setUsername(text.target.value)} label={"Username or Email"} variant={"outlined"}/>
                 <TextField className={"input"} error={passwordError.length>0} helperText={passwordError} onChange={(text)=>setPassword(text.target.value)} label={"Password"} variant={"outlined"} type={"password"}/>
