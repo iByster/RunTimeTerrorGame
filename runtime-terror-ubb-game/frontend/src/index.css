@@ -72,7 +72,7 @@ code {
   color: white;
 }
 
-body
+.formparent
 {
   background-color: var(--albastru-ubb);
   display: flex;
@@ -80,4 +80,5 @@ body
   background-position: center;
   background-repeat: no-repeat;
   justify-content: center;
+  min-height: 100vh;
 }
