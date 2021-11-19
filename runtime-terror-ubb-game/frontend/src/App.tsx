@@ -1,18 +1,14 @@
 import React from 'react';
+import logo from './logo.svg';
 import './App.css';
-import Register from './components/register/Register';
-import {Outlet, Route, Routes} from "react-router-dom";
-import Login from "./components/login/Login";
+import {Level} from "./components/Level/Level";
 
-function App() {
-  return (
-    <div>
-      <Routes>
-        <Route path={"/"} element={<Login/>}/>
-        <Route path={"/register"} element={<Register/>}/>
-      </Routes>
-        <Outlet/>
-    </div>
+const App: React.FC= () => {
+
+    return (
+
+        <Level/>
+
   );
 }
 
