@@ -89,7 +89,6 @@ export default function Login() {
                 <div className={"banner"}>
                     <div>
                         {/*Left side*/}
-                        <img alt={"Sigla UBB"} src={Logo} width={100} height={100}/>
                     </div>
                     {/*Center piece*/}
                     <h1 className={"gametitle"}>UBB Game</h1>
