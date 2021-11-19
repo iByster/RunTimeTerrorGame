@@ -25,6 +25,9 @@ export default function Login() {
     }
 
     function validateUsername():boolean {
+        if (/\@/.test(username)) {
+            return validateField(username,/^[a-zA-Z0-9]{1,50}@[a-zA-Z0-9]{1,50}.[a-zA-Z]{2,5}$/);
+        }
         return validateField(username, /^[\S]{3,50}$/);
     }
 
@@ -39,8 +42,13 @@ export default function Login() {
         resetErrorFlags();
         //Username
         if (!validateUsername()) {
-            setUsernameError('Username should be between 3 and 50 alphanumeric chars long!');
-            anyError.current = true;
+            if (/\@/.test(username)) {
+                setUsernameError('Wrong email given. Example: smth@domain.com');
+                anyError.current = true;
+            } else {
+                setUsernameError('Username should be between 3 and 50 alphanumeric chars long!');
+                anyError.current = true;
+            }
         }
         if(!validatePassword())
         {
