@@ -19,9 +19,6 @@ code {
     monospace;
 }
 
-*{
-  font-family: EarlyGameBoy;
-  font-size: 14px;
 :root
 {
   --albastru-ubb: #004174;
