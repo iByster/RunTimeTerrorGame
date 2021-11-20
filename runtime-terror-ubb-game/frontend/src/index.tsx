@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "./fonts/EarlyGameBoy.ttf";
 
+import './fonts/EarlyGameBoy.ttf'; 
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
