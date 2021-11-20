@@ -1,5 +1,7 @@
 import React from 'react';
+import logo from './logo.svg';
 import './App.css';
+import {Level} from "./components/Level/Level";
 import { LeaderBoard } from './components/LeaderBoard/LeaderBoard';
 import Register from './components/register/Register';
 import {Outlet, Route, Routes} from "react-router-dom";
@@ -15,6 +17,7 @@ const App : React.FC = () => {
       <Routes>
         <Route path={"/"} element={<Login/>}/>
         <Route path={"/leaderboard"} element={<LeaderBoard/>}/>
+        <Route path={"/levels"} element={<Level/>}/>
         <Route path={"/register"} element={<Register/>}/>
       </Routes>
         <Outlet/>

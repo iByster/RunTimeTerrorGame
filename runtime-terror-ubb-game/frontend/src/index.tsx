@@ -1,17 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-import App from "./App";
-import {BrowserRouter} from "react-router-dom";
+import "./fonts/EarlyGameBoy.ttf";
 
 import './fonts/EarlyGameBoy.ttf'; 
 
 ReactDOM.render(
   <React.StrictMode>
-      <BrowserRouter>
-          <App/>
-      </BrowserRouter>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
