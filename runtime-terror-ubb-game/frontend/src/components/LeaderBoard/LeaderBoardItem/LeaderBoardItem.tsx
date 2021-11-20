@@ -1,4 +1,4 @@
-import { Avatar, Typography } from '@material-ui/core';
+import { Avatar } from '@material-ui/core';
 import { Box } from '@mui/system';
 import React from 'react';
 import './LeaderBoardItem.scss';
@@ -45,7 +45,7 @@ export const LeaderBoardItem: React.FC<LeaderBoardItemProps> = ({ user }) => {
           sx={{
             display: 'flex',
             flexDirection: 'row',
-            minWidth: 300
+            minWidth: 300,
           }}
         >
           <Avatar
@@ -58,7 +58,7 @@ export const LeaderBoardItem: React.FC<LeaderBoardItemProps> = ({ user }) => {
               border: '5px solid black',
             }}
           />
-          <p className={style['leader-board-item-p']} >{user.username}</p>
+          <p className={style['leader-board-item-p']}>{user.username}</p>
         </Box>
 
         {/* <Box
@@ -67,7 +67,9 @@ export const LeaderBoardItem: React.FC<LeaderBoardItemProps> = ({ user }) => {
         flexDirection: 'row',
         gap: '40px'
       }}> */}
-        <p className={style['leader-board-item-p']} style={{marginLeft: 40}}>{user.maxLvl}</p>
+        <p className={style['leader-board-item-p']} style={{ marginLeft: 40 }}>
+          {user.maxLvl}
+        </p>
       </Box>
 
       <p className={style['leader-board-item-p']}>{user.score}</p>

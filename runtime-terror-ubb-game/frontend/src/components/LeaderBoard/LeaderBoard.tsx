@@ -57,7 +57,7 @@ export const LeaderBoard: React.FC<LeaderBoardProps> = ({}) => {
 
       <Box
         sx={{
-        //   bgcolor: 'red',
+          //   bgcolor: 'red',
           width: '100%',
         }}
       >

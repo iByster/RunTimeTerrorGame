@@ -16,17 +16,24 @@ export const LeaderBoardHeader: React.FC<LeaderBoardHeaderProps> = ({}) => {
     >
       <Box
         sx={{
-        //   backgroundColor: 'blue',
+          //   backgroundColor: 'blue',
 
           width: '80%',
           display: 'flex',
           flexDirection: 'row',
-        //   justifyContent: 'space-between',
-          
+          //   justifyContent: 'space-between',
         }}
       >
-        <p style={{ fontSize: '25px', marginLeft: '100px', marginRight: '140px' }}>USR.</p>
-{/* 
+        <p
+          style={{
+            fontSize: '25px',
+            marginLeft: '100px',
+            marginRight: '140px',
+          }}
+        >
+          USR.
+        </p>
+        {/* 
         <Box
           sx={{
             display: 'flex',
@@ -35,8 +42,8 @@ export const LeaderBoardHeader: React.FC<LeaderBoardHeaderProps> = ({}) => {
             marginRight: '190px'
           }}
         > */}
-          <p style={{ fontSize: '25px', marginRight: '70px' }}>LVL.</p>
-          <p style={{ fontSize: '25px' }}>SCR.</p>
+        <p style={{ fontSize: '25px', marginRight: '70px' }}>LVL.</p>
+        <p style={{ fontSize: '25px' }}>SCR.</p>
         {/* </Box> */}
       </Box>
     </Box>
