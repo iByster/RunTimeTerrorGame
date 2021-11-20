@@ -1,8 +1,8 @@
 @font-face {
   font-family: "EarlyGameBoy";
   src: local("EarlyGameBoy"),
-   url("./fonts/EarlyGameBoy.ttf") format("truetype");
-   font-weight: normal;
+  url("./fonts/Early_GameBoy.ttf") format("truetype");
+  font-weight: normal;
 }
 
 body {
@@ -17,4 +17,83 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+:root
+{
+  --albastru-ubb: #004174;
+}
+
+/*Register and login interfaces*/
+.form#register, .form#login
+{
+  background: white;
+  box-shadow: black 5px 5px;
+  border: 2px black solid;
+  border-radius: 5px;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  position: relative;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  animation: fade-in 200ms;
+  animation-timing-function: linear;
+  height: fit-content;
+}
+
+.formTitle
+{
+  font-family: EarlyGameBoy, serif;
+}
+
+@keyframes fade-in
+{
+  from
+  {
+    opacity: 0;
+  }
+  to
+  {
+    opacity: 1;
+  }
+}
+
+.form .input
+{
+  margin-bottom: 15px;
+}
+
+.form button.input
+{
+  background-color: var(--albastru-ubb);
+  color: white;
+}
+
+.formparent
+{
+  background-color: var(--albastru-ubb);
+  display: flex;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/*Banner - contine logo-urile aplicatiei*/
+.banner
+{
+  display: grid;
+  grid-template-columns: fit-content(25%) auto fit-content(25%);
+  width: inherit;
+  align-items: center;
+
+}
+
+.gametitle
+{
+  font-family: EarlyGameBoy, serif;
 }
