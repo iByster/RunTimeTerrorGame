@@ -17,7 +17,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers(
-                        "/save",
+                        "/createAccount",
                         "/login"
                 )
                 .permitAll();

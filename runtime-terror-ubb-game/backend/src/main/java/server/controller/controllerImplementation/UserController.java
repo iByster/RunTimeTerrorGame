@@ -31,6 +31,15 @@ public class UserController {
             return new Token(getJWTToken(user.getUsername()));
     }
 
+    @PostMapping("/register")
+    public Token register(@RequestBody User user) {
+        User fromRepository = userService.add(user);
+        if (fromRepository == null)
+            return new Token("");
+        else
+            return new Token(getJWTToken(user.getUsername()));
+    }
+
     private String getJWTToken(String username) {
         String secretKey = "mySecretKey";
         List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");

@@ -12,10 +12,20 @@ public class PlayerService {
     @Autowired
     private PlayerIRepository playerRepository;
 
-    public Player find(String username) {
+    public Player findPlayerByUsername(String username) {
         try {
             Player player = playerRepository.getOne(username);
             return player;
+        } catch (EntityNotFoundException exception) {
+            return null;
+        }
+    }
+
+    public Player updatePlayerScore(String username, Long score) {
+        try {
+            Player p = playerRepository.getOne(username);
+            p.setScore(score);
+            return playerRepository.save(p);
         } catch (EntityNotFoundException exception) {
             return null;
         }
