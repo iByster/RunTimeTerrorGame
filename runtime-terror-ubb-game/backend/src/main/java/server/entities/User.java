@@ -18,7 +18,7 @@ public class User implements Serializable {
     private String password;
     private String email;
     private String profileImage;
-    private Integer rank;
+    private Integer rankOfUser;
 
     public String getUsername() {
         return username;
