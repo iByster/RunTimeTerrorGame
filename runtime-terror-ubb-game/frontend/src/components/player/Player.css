@@ -1,0 +1,18 @@
+.background{
+    height: 50vh;
+    width: 50vw;
+    background: url('../../img/BackgroundAnimated.gif');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+}
+.player{
+    height: 10vh;
+    width: 10vw;
+    background: url('../../img/boy_walking_animation.gif');
+    background-size: cover;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
