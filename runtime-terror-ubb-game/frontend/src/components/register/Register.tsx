@@ -101,7 +101,7 @@ function Register() {
     }
 
     function onLoginButtonClicked() {
-        navigate("/");
+        navigate("/login");
     }
 
     return (
