@@ -3,8 +3,10 @@ import Swal from "sweetalert2";
 import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import Logo from "../../img/logo-cs.png";
+import { useAuthContext } from "../../providers/AuthProvider/AuthProvider";
 
 export default function Login() {
+    const { login } = useAuthContext();
     const [usernameError, setUsernameError] = useState('');
     const [username, setUsername] = useState('');
 
@@ -61,6 +63,7 @@ export default function Login() {
                 title: 'Signed in successfully!',
                 icon: "success"
             }).then(() => {
+                login({username})
                 navigate("/");
             });
         } else {
