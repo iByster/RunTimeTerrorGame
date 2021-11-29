@@ -9,10 +9,10 @@ interface PlayerProps{
 }
 
 function move(e: any) {
-  if(e.code === 'KeyA' || e.code === 'arrowLeft'){
+  if(e.code === 'KeyA' || e.code === 'ArrowLeft'){
     if(parseInt(getComputedStyle(document.documentElement).getPropertyValue('--player-pos'),undefined)-1 >= 0)
       document.documentElement.style.setProperty('--player-pos',(parseInt(getComputedStyle(document.documentElement).getPropertyValue('--player-pos'),undefined)-1).toString());
-  } else if(e.code === 'KeyD' || e.code === 'arrowRight'){
+  } else if(e.code === 'KeyD' || e.code === 'ArrowRight'){
     if(parseInt(getComputedStyle(document.documentElement).getPropertyValue('--player-pos'),undefined)+1 <= 100)
     document.documentElement.style.setProperty('--player-pos',(parseInt(getComputedStyle(document.documentElement).getPropertyValue('--player-pos'),undefined)+1).toString());
   }
