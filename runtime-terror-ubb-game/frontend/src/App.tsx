@@ -8,6 +8,7 @@ import { Navbar } from './components/navbar/Navbar';
 import { Level } from './components/Level/Level';
 import { AuthContextProvider } from './providers/AuthProvider/AuthProvider';
 import { Home } from './components/Home/Home';
+import { Player } from './components/player/Player';
 
 
 
@@ -16,6 +17,7 @@ const App : React.FC = () => {
     <AuthContextProvider>
       <Navbar name={'woowowow'}/>
       <Routes>
+        <Route path={"/player"} element={<Player player={{life:100,items:[]}}/>}/>
         <Route path={"/login"} element={<Login/>}/>
         <Route path={"/leaderboard"} element={<LeaderBoard/>}/>
         <Route path={"/"} element={<Home/>}/>

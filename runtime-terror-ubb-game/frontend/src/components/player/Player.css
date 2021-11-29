@@ -1,3 +1,9 @@
+:root{
+    --player-height: 16vh;
+    --player-width: 10vw;
+    --player-pos: 50; /* cel mai in stanga 0; cel mai in dreapta 100 */
+    --player-margin: 5%;
+}
 .background{
     height: 50vh;
     width: 50vw;
@@ -5,14 +11,14 @@
     background-size: cover;
     display: flex;
     align-items: center;
+    position: relative;
 }
 .player{
-    height: 10vh;
-    width: 10vw;
-    background: url('../../img/boy_walking_animation.gif');
+    height: var(--player-height);
+    width: var(--player-width);
+    background: url('../../img/boy_walking_back_view.gif');
     background-size: cover;
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    left: calc( (var(--player-pos)*1% - var(--player-width) / 2 ) * 0.8 + 5vw);
 }

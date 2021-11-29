@@ -8,13 +8,20 @@ interface PlayerProps{
     }
 }
 
-export const Player: React.FC<PlayerProps> = ({player:PlayerProps}) => {
-  function onKeyDown(e: any) {
-    console.log(e);
+function move(e: any) {
+  if(e.code === 'KeyA' || e.code === 'arrowLeft'){
+    if(parseInt(getComputedStyle(document.documentElement).getPropertyValue('--player-pos'),undefined)-1 >= 0)
+      document.documentElement.style.setProperty('--player-pos',(parseInt(getComputedStyle(document.documentElement).getPropertyValue('--player-pos'),undefined)-1).toString());
+  } else if(e.code === 'KeyD' || e.code === 'arrowRight'){
+    if(parseInt(getComputedStyle(document.documentElement).getPropertyValue('--player-pos'),undefined)+1 <= 100)
+    document.documentElement.style.setProperty('--player-pos',(parseInt(getComputedStyle(document.documentElement).getPropertyValue('--player-pos'),undefined)+1).toString());
   }
+}
+
+export const Player: React.FC<PlayerProps> = ({player:PlayerProps}) => {
   return(
-    <div className={`background`}>
-      <div className={`player`} onKeyDown={onKeyDown} tabIndex={-1}></div>
+    <div className={`background`} onKeyDown={move} tabIndex={0}>
+      <div className={`player`}></div>
     </div>
   );
 };
