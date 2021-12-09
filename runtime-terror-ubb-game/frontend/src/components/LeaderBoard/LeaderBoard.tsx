@@ -1,11 +1,12 @@
 import { Container, Box } from '@material-ui/core';
 import React from 'react';
+import { withNavbar } from '../../decorators/withNavbar';
 import { LeaderBoardHeader } from './LeaderBoardHeader/LeaderBoardHeader';
 import { LeaderBoardItem } from './LeaderBoardItem/LeaderBoardItem';
 
 interface LeaderBoardProps {}
 
-export const LeaderBoard: React.FC<LeaderBoardProps> = ({}) => {
+const LeaderBoard: React.FC<LeaderBoardProps> = ({}) => {
   let mock = [
     {
       profileImg: '',
@@ -68,3 +69,6 @@ export const LeaderBoard: React.FC<LeaderBoardProps> = ({}) => {
     </Container>
   );
 };
+
+export default withNavbar(LeaderBoard);
+// export default LeaderBoard;

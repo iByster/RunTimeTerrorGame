@@ -1,7 +1,8 @@
+
 import { json, status } from '../../utils/restUtils';
 import User from './UserEntity';
 
-const SERVER_BASE_URL = 'http://127.0.0.1:3000';
+const SERVER_BASE_URL = 'http://127.0.0.1:3001';
 
 export default class UserController {
   register(user: User) {
@@ -27,10 +28,6 @@ export default class UserController {
         console.log('Request succeeded with JSON response', data);
         return data;
       })
-      .catch((error) => {
-        console.log('Request failed', error);
-        return error;
-      });
   }
 
   login(user: User) {
@@ -55,10 +52,6 @@ export default class UserController {
       .then((data) => {
         console.log('Request succeeded with JSON response', data);
         return data;
-      })
-      .catch((error) => {
-        console.log('Request failed', error);
-        return error;
       });
   }
 }
