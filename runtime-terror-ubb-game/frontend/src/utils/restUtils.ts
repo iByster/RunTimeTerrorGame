@@ -1,4 +1,4 @@
-export function status(response: any) {
+export function status(response: Response) {
     console.log('response status '+response.status);
     if (response.status >= 200 && response.status < 300) {
         return Promise.resolve(response)
@@ -7,6 +7,6 @@ export function status(response: any) {
     }
 }
 
-export function json(response: any) {
+export function json(response: Response) {
     return response.json()
 }
