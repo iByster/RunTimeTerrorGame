@@ -1,30 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Outlet, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { LeaderBoard } from './components/LeaderBoard/LeaderBoard';
+import Home from './components/Home/Home';
+import LeaderBoard from './components/LeaderBoard/LeaderBoard';
+import Level from './components/Level/Level';
+import Login from './components/login/Login';
+import Navbar from './components/navbar/Navbar';
 import Register from './components/register/Register';
-import {Outlet, Route, Routes} from "react-router-dom";
-import Login from "./components/login/Login";
-import { Navbar } from './components/navbar/Navbar';
-import { Level } from './components/Level/Level';
 import { AuthContextProvider } from './providers/AuthProvider/AuthProvider';
-import { Home } from './components/Home/Home';
+import { NotFound } from './router/NotFound';
+import PrivateRoute from './router/PrivateRoute';
 
-
-
-const App : React.FC = () => {
+const App: React.FC = () => {
   return (
     <AuthContextProvider>
-      <Navbar name={'woowowow'}/>
       <Routes>
-        <Route path={"/login"} element={<Login/>}/>
-        <Route path={"/leaderboard"} element={<LeaderBoard/>}/>
-        <Route path={"/"} element={<Home/>}/>
-        <Route path={"/levels"} element={<Level/>}/>
-        <Route path={"/register"} element={<Register/>}/>
+        <Route path='*' element={<NotFound />} />
+        <Route path={'/login'} element={<Login />} />
+        <Route
+          path={'/leaderboard'}
+          element={<PrivateRoute component={LeaderBoard} />}
+        />
+        <Route path={'/levels'} element={<PrivateRoute component={Level} />} />
+        <Route path={'/'} element={<PrivateRoute component={Home} />} />
+        <Route path={'/register'} element={<Register />} />
       </Routes>
-        <Outlet/>
+      <Outlet />
     </AuthContextProvider>
   );
-}
+};
 
 export default App;

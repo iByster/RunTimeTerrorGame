@@ -4,6 +4,9 @@ import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import Logo from "../../img/logo-cs.png";
+import UserController from "../../controllers/user/UserController";
+import User from "../../controllers/user/UserEntity";
+import { useAuthContext } from "../../providers/AuthProvider/AuthProvider";
 
 function Register() {
     const [usernameError, setUsernameError] = useState('');
@@ -20,6 +23,7 @@ function Register() {
 
     const anyError = useRef(false);
     const navigate = useNavigate();
+    const { login } = useAuthContext();
 
     function resetErrorFlags() {
         const errorSetters = [setUsernameError, setEmailError, setPasswordError, setConfirmedPasswordError];
@@ -84,12 +88,24 @@ function Register() {
                     anyError.current = true;
                 }
                 if (!anyError.current) {
-                    Swal.fire({
-                        title: 'Account created successfully!',
-                        icon: "success"
-                    }).then(() => {
-                        navigate("/");
-                    });
+                    try {
+                        const controller = new UserController();
+                        const user = new User(username, password, email, '', 0);
+                        const token = await controller.register(user);
+                        login({username, token: token.string});
+                        Swal.fire({
+                            title: 'Account created successfully!',
+                            icon: "success"
+                        }).then(() => {
+                            
+                            navigate("/login");
+                        });
+                    } catch (e) {
+                        await Swal.fire({
+                            title: 'Something went wrong. Please try again later',
+                            icon: "error"
+                        })
+                    }
                 } else {
                     await Swal.fire({
                         title: 'Wrong data given',

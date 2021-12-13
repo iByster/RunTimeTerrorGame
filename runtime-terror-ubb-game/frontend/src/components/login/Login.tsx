@@ -4,6 +4,8 @@ import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import Logo from "../../img/logo-cs.png";
 import { useAuthContext } from "../../providers/AuthProvider/AuthProvider";
+import UserController from "../../controllers/user/UserController";
+import User from "../../controllers/user/UserEntity";
 
 export default function Login() {
     const { login } = useAuthContext();
@@ -39,7 +41,7 @@ export default function Login() {
         return validateField(password, /^[\S]{8,50}$/);
     }
 
-    function onLoginButtonClicked() {
+    async function onLoginButtonClicked() {
         //Trebuie facuta verificarea datelor pe frontend si backend
         //Validare front-end
         resetErrorFlags();
@@ -59,13 +61,24 @@ export default function Login() {
             anyError.current = true;
         }
         if (!anyError.current) {
-            Swal.fire({
-                title: 'Signed in successfully!',
-                icon: "success"
-            }).then(() => {
-                login({username})
-                navigate("/");
-            });
+            try {
+                const controller = new UserController();
+                const user = new User(username, password, '', '', 0);
+                const token = await controller.login(user);
+                login({username, token: token.string});
+                Swal.fire({
+                    title: 'Signed in successfully!',
+                    icon: "success"
+                }).then(() => {
+                    
+                    navigate("/");
+                });
+            } catch (e) {
+                await Swal.fire({
+                    title: 'Wrong credentials given',
+                    icon: "error"
+                })
+            }
         } else {
             Swal.fire({
                 title: 'Wrong credentials given',

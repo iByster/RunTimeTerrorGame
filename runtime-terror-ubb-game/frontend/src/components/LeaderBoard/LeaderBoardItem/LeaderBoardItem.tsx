@@ -27,7 +27,7 @@ export const LeaderBoardItem: React.FC<LeaderBoardItemProps> = ({ user }) => {
     // blue
     '#004174';
 
-  console.log(rankFrameColor);
+  // console.log(rankFrameColor);
 
   return (
     <div

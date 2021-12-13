@@ -1,10 +1,11 @@
 import {Grid} from "@mui/material"
 import React from "react";
 import {LevelItem} from "./LevelItem/LevelItem";
+import { withNavbar } from '../../decorators/withNavbar';
 
 interface LevelProps{}
 
-export const Level: React.FC<LevelProps> = ({}) => {
+const Level: React.FC<LevelProps> = ({}) => {
 
     let mock_user_data={unlocked_levels:1,username:'andrei'}
 
@@ -25,3 +26,5 @@ export const Level: React.FC<LevelProps> = ({}) => {
         </Grid>
     );
 }
+
+export default withNavbar(Level);
