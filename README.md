@@ -31,12 +31,29 @@ Componenta NavBar permite utilizatorului să navigheze prin aplicație odată ce
 Conține o listă a tuturor nivelelor din joc.  
   - LevelItem reprezintă un element din lista nivelelor.    
   
-###Backend  
-####Premise:  
-- TBD  
+### Backend  
+#### Premise:  
+- Gradle >=4.10
+- MySQL
 #### Cum se instalează proiectul backend:  
 1. Dacă nu ai descărcat proiectul frontend, urmează pașii 1-3 de mai sus.  
-2. TBD  
 
+#### Cum se face deploy la proiectul backend:
+##### Folosind comanda gradle
+**Atenție!** Spring necesită o versiune >=4.10 pentru gradle pentru a putea compila proiectul. Dacă nu îndeplinești această condiție, încearcă metoda descrisă mai jos.
+1. Deschide o consolă în directorul rădăcină al proiectului backend (nume-repo-github/backend)
+2. Rulează comanda gradle bootJar (comenzile implicite ale Gradle de build **nu** funcționează)
+3. Rezultatul comenzii este un fișier .jar pe care-l găsești la următoarea cale relativă: build/libs
+##### Folosind IntelliJ
+1. Deschide proiectul backend folosind IntelliJ
+2. După ce s-a încărcat proiectul, deschide tabul Gradle care se află în partea din dreapta sus a interfeței grafice (dacă nu apare, apasă pe tabul View -> Tool Windows -> Gradle)
+3. Asigură-te că ai deschis următoarea ierarhie: backend > Tasks > build
+4. Apasă dublu-click pe bootJar
+5. La fel ca mai sus, fișierul .jar rezultat se va găsi în /build/libs
+
+#### Cum se rulează proiectul backend:
+**Asigură-te că ai făcut build la ultima versiune de jar!**
+**Asigură-te că serverul MySQL este pornit și are un utilizator cu credențialele din application.properties**
+Folosește comanda <code>java -jar *path/relativ/către/jar*</code>
 ### Arhitectura aplicației:  
 Se vor încărca diagramele sub formă de fotografii de îndată ce acestea sunt actualizate pentru a reprezenta starea curentă a aplicației.
