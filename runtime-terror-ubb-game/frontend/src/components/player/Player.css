@@ -1,0 +1,24 @@
+:root{
+    --player-height: 16vh;
+    --player-width: 10vw;
+    --player-pos: 50; /* cel mai in stanga 0; cel mai in dreapta 100 */
+    --player-margin: 5%;
+}
+.background{
+    height: 50vh;
+    width: 50vw;
+    background: url('../../img/BackgroundAnimated.gif');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.player{
+    height: var(--player-height);
+    width: var(--player-width);
+    background: url('../../img/boy_walking_back_view.gif');
+    background-size: cover;
+    position: absolute;
+    bottom: 0;
+    left: calc( (var(--player-pos)*1% - var(--player-width) / 2 ) * 0.8 + 5vw);
+}
