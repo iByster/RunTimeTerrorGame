@@ -5,8 +5,8 @@
     --player-margin: 5%;
 }
 .background{
-    height: 90vh;
-    width: 90vw;
+    height: 80vh;
+    width: 80vw;
     background: url('../../img/BackgroundAnimated.gif');
     background-size: cover;
     display: flex;
