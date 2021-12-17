@@ -19,9 +19,9 @@ const Level: React.FC<LevelProps> = ({}) => {
               style={{ minHeight: '100vh' }}>
 
 
-            <LevelItem levelName={"Level 1"} unlocked={(mock_user_data.unlocked_levels>=1) ? true : false}/>
-            <LevelItem levelName={"Level 2"} unlocked={(mock_user_data.unlocked_levels>=2) ? true : false}/>
-            <LevelItem levelName={"Level 3"} unlocked={(mock_user_data.unlocked_levels>=3) ? true : false}/>
+            <LevelItem levelName={"Level 1"} unlocked={(mock_user_data.unlocked_levels>=1) ? true : false} levelId={1}/>
+            <LevelItem levelName={"Level 2"} unlocked={(mock_user_data.unlocked_levels>=2) ? true : false} levelId={2}/>
+            <LevelItem levelName={"Level 3"} unlocked={(mock_user_data.unlocked_levels>=3) ? true : false} levelId={3}/>
 
         </Grid>
     );

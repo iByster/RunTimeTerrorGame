@@ -10,6 +10,7 @@ import Register from './components/register/Register';
 import { AuthContextProvider } from './providers/AuthProvider/AuthProvider';
 import { NotFound } from './router/NotFound';
 import PrivateRoute from './router/PrivateRoute';
+import {Player} from "./components/player/Player";
 
 const App: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ const App: React.FC = () => {
         <Route path={'/levels'} element={<PrivateRoute component={Level} />} />
         <Route path={'/'} element={<PrivateRoute component={Home} />} />
         <Route path={'/register'} element={<Register />} />
+        <Route path={"/game/:levelId"} element={<Player player={{life: 100, items: []}}/>}/>
       </Routes>
       <Outlet />
     </AuthContextProvider>
