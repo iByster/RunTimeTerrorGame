@@ -1,0 +1,21 @@
+.container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+#countdown.container
+{
+    background-color: #0900ff;
+}
+
+#countdownText
+{
+    font-size: 128px;
+    color: white;
+    text-shadow: 10px 10px black;
+}

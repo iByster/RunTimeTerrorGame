@@ -20,8 +20,8 @@ function move(e: any) {
 
 export const Player: React.FC<PlayerProps> = ({player:PlayerProps}) => {
   return(
-    <div className={`background`} onKeyDown={move} tabIndex={0} ref={input => input && input.focus()}>
-      <div className={`player`}></div>
-    </div>
+      <div className={`background`} onKeyDown={move} tabIndex={0} ref={input => input && input.focus()}>
+          <div className={`player`}></div>
+      </div>
   );
 };
