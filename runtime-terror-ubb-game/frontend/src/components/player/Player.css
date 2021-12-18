@@ -5,16 +5,19 @@
     --player-margin: 5%;
 }
 .background{
-    height: 50vh;
-    width: 50vw;
+    height: 95vh;
+    width: 70vw;
     background: url('../../img/BackgroundAnimated.gif');
     background-size: cover;
     display: flex;
     align-items: center;
     position: relative;
+    margin: 0 auto;
 }
 .player{
     height: var(--player-height);
+    background-attachment: fixed;
+    background-position: center top;
     width: var(--player-width);
     background: url('../../img/boy_walking_back_view.gif');
     background-size: cover;
