@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { generateProjectiles } from '../../utils/Projectiles/generateProjectiles';
 import { getProjectileType } from '../../utils/Projectiles/getProjectileType';
+import Player from '../player/Player';
 // import Player from '../player/Player';
 import { IProjectile, Projectile } from '../Projectile/Projectile';
 
@@ -22,22 +23,22 @@ export const GameOne: React.FC<GameOneProps> = ({}) => {
   //   }, 3000);
 
   useEffect(() => {
-    setProjectilesWave1(generateProjectiles(8, 0));
-    setProjectilesWave2(generateProjectiles(8, 2500));
+    setProjectilesWave1(generateProjectiles(50, 0));
+    setProjectilesWave2(generateProjectiles(50, 2500));
     // setProjectilesWave3(generateProjectiles(50, 5000));
   }, []);
 
-  useEffect(() => {
-    // setInterval(() => {
-    //   setProjectilesWave1(generateProjectiles(8));
-    // }, 19800);
-    setInterval(() => {
-      setProjectilesWave1(generateProjectiles(8, 0));
-    }, 13800);
-    setInterval(() => {
-      setProjectilesWave2(generateProjectiles(8, 2500));
-    }, 24000);
-  }, [projectilesWave1, projectilesWave2, start]);
+  // useEffect(() => {
+  //   // setInterval(() => {
+  //   //   setProjectilesWave1(generateProjectiles(8));
+  //   // }, 19800);
+  //   setInterval(() => {
+  //     setProjectilesWave1(generateProjectiles(8, 0));
+  //   }, 13800);
+  //   setInterval(() => {
+  //     setProjectilesWave2(generateProjectiles(8, 2500));
+  //   }, 24000);
+  // }, [projectilesWave1, projectilesWave2, start]);
 
   // function generateProjectile() {
   //   if (projectiles.length > 0) {
@@ -106,7 +107,7 @@ export const GameOne: React.FC<GameOneProps> = ({}) => {
       tabIndex={0}
       ref={(input) => input && input.focus()}
     >
-      {projectilesWave1 &&
+      {/* {projectilesWave1 &&
         projectilesWave1.map((projectile) => (
           <Projectile
             spawnAfter={projectile.spawnAfter}
@@ -125,7 +126,7 @@ export const GameOne: React.FC<GameOneProps> = ({}) => {
             type={projectile.type}
             key={Math.random()}
           />
-        ))}
+        ))} */}
         {/* {projectilesWave3 &&
         projectilesWave3.map((projectile) => (
           <Projectile
@@ -136,7 +137,7 @@ export const GameOne: React.FC<GameOneProps> = ({}) => {
             key={Math.random()}
           />
         ))} */}
-      {/* <Player /> */}
+      {/* <Player/> */}
     </div>
   );
 };

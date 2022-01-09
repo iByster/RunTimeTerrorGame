@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, createRef } from 'react';
 import './Projectile.css';
 
 export interface IProjectile {
@@ -6,6 +6,7 @@ export interface IProjectile {
   spawnAfter: number;
   speed: 'easy' | 'normal' | 'fast';
   type: 'controller' | 'no-money' | 'ceas' | 'glob' | 'fail';
+  handleCollision?(ref: any): void;
 }
 
 export const Projectile: React.FC<IProjectile> = ({
@@ -13,9 +14,11 @@ export const Projectile: React.FC<IProjectile> = ({
   spawnAfter,
   speed,
   type,
+  handleCollision
 }) => {
   const [projectileAnimation, setProjectileAnimation] = useState<string>('');
 
+  const pjRef = createRef<any>()
   const constructSpeedClass = () => {
     return `projectile-spawn-${speed}`
   }
@@ -30,5 +33,11 @@ export const Projectile: React.FC<IProjectile> = ({
     }, spawnAfter);
   };
 
- return <div className={`projectile ${projectileAnimation} ${type}`} style={{ left: positionY }}></div>;
+  setInterval(() => {
+    if(handleCollision) {
+      handleCollision(pjRef)
+    }
+  }, 500)
+
+ return <div ref={pjRef} className={`projectile ${projectileAnimation} ${type}`} style={{ left: positionY }}></div>;
 };
