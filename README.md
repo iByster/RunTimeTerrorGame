@@ -4,7 +4,16 @@
 
 ### Despre proiect
 Acest repository conține proiectul echipei RunTimeTerror în cadrul materiei Proiect Colectiv 2021-2022 a Facultății de Matematică și Informatică a Universității Babeș-Bolyai împreună cu Evozon.  
-Proiectul constă într-un joc 2D client (ReactJS)-server (Java) în care dorim să prezentăm într-un mod interactiv și distractiv viața de student în cadrul facultății noastre, văzută din perspectiva noastră.
+Proiectul constă într-un joc 2D client (ReactJS)-server (Java) în care dorim să prezentăm într-un mod interactiv și distractiv viața de student în cadrul facultății noastre, văzută din perspectiva noastră.  
+
+### Echipa RunTimeTerror
+Acest joc a fost dezvoltat de:
+- Gane Alexandru - project manager & frontend dev
+- Mateaș Andrei - 
+- Irimiciuc Andreea - backend dev
+- Șapcă Cătălina - backend dev
+- Cocora Lorena - grafician
+
 #### Tehnologii folosite
 - React, împreună cu HTML, CSS și TypeScript
 - REST
