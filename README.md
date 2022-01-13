@@ -96,7 +96,17 @@ Aici vedeți câteva capturi de ecran din aplicație.
 
 
 ### Arhitectura aplicației:  
-Se vor încărca diagramele sub formă de fotografii de îndată ce acestea sunt actualizate pentru a reprezenta starea curentă a aplicației.
+Diagramele UML care descriu comportamentul aplicației se află aici.
+#### Diagramele de clase
+- Domain
+![image](https://user-images.githubusercontent.com/23705132/149391465-971c11c7-fd61-4a62-98e8-4641311a0f0f.png)
+- Infrastructure
+![image](https://user-images.githubusercontent.com/23705132/149391507-b7d4751f-4472-4d11-a67b-5449b36cab18.png)
+- Business
+![image](https://user-images.githubusercontent.com/23705132/149391632-4c296002-4ed8-48c6-958b-95d2646d0b02.png)
+
+
+
 
 #### Componente folosite:  
 - Login  
