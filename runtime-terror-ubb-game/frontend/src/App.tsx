@@ -1,16 +1,15 @@
 import React from 'react';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import './App.css';
+import { GameOne } from './components/GameOne/GameOne';
 import Home from './components/Home/Home';
 import LeaderBoard from './components/LeaderBoard/LeaderBoard';
 import Level from './components/Level/Level';
 import Login from './components/login/Login';
-import Navbar from './components/navbar/Navbar';
 import Register from './components/register/Register';
 import { AuthContextProvider } from './providers/AuthProvider/AuthProvider';
 import { NotFound } from './router/NotFound';
 import PrivateRoute from './router/PrivateRoute';
-import {Player} from "./components/player/Player";
 import Game from "./components/game/Game";
 
 const App: React.FC = () => {
@@ -25,6 +24,7 @@ const App: React.FC = () => {
         />
         <Route path={'/levels'} element={<PrivateRoute component={Level} />} />
         <Route path={'/'} element={<PrivateRoute component={Home} />} />
+        <Route path={'/test'} element={<PrivateRoute component={GameOne} />} />
         <Route path={'/register'} element={<Register />} />
         <Route path={"/game/:levelId"} element={<Game/>}/>
       </Routes>
