@@ -16,8 +16,6 @@ const Game = () => {
   const [projectilesWave8, setProjectilesWave8] = useState<IProjectile[]>([]);
   const [projectilesWave9, setProjectilesWave9] = useState<IProjectile[]>([]);
   const playerRef = useRef<any>(null);
-  const { levelId } = useParams();
-  const [timeUntilGameStart, setTimeUntilGameStart] = useState(3);
 
   // useEffect(() => {
   //   setProjectilesWave1(generateProjectiles(10, 0));
@@ -68,16 +66,7 @@ const Game = () => {
   //   }, 24000);
   // }, [projectilesWave1, projectilesWave2]);
 
-  useEffect(() => {
-    //    Facem un countdown
-    const countdownInterval = setInterval(() => {
-      if (timeUntilGameStart > 0) {
-        setTimeUntilGameStart(timeUntilGameStart - 1);
-        // console.log('Ceva');
-      }
-    }, 1000);
-    return () => clearInterval(countdownInterval);
-  }, [timeUntilGameStart]);
+  
 
   function isCollide(a: any, b: any) {
     return !(
@@ -98,11 +87,9 @@ const Game = () => {
       );
     }
   };
-  if (timeUntilGameStart === 0) {
     //Jocul se desfasoara aici
     return (
-      <div className={'container'}>
-        <h1>Level {levelId}</h1>
+      <div >
         <Player ref={playerRef} player={{ life: 100, items: [] }} />
         {projectilesWave1 &&
           projectilesWave1.map((projectile) => (
@@ -205,13 +192,7 @@ const Game = () => {
           ))}
       </div>
     );
-  } else {
-    return (
-      <div className={'container'} id={'countdown'}>
-        <h1 id={'countdownText'}>{timeUntilGameStart}</h1>
-      </div>
-    );
-  }
+  
 };
 
 export default Game;

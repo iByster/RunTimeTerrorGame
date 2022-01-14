@@ -78,6 +78,18 @@
     height: 20vh;
     background-size: cover;
 }
+.bere {
+    background: url('../../img/bere.png');
+    width: 20vh;
+    height: 20vh;
+    background-size: cover;
+}
+.redbull {
+    background: url('../../img/redbull.png');
+    width: 20vh;
+    height: 20vh;
+    background-size: cover;
+}
 .no-money {
     background: url('../../img/noMoney.png');
     width: 20vh;
