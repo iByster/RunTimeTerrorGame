@@ -8,7 +8,7 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="/media/petru/Disc local/Faculta/Proiect colectiv/RunTimeTerrorGame/runtime-terror-ubb-game/backend" />
+            <option value="$PROJECT_DIR$" />
           </set>
         </option>
       </GradleProjectSettings>

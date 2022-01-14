@@ -1,6 +1,8 @@
 #countdown.container
 {
     background-color: #0900ff;
+    padding: 0;
+    margin: 0;
 }
 
 #countdownText
@@ -8,4 +10,7 @@
     font-size: 128px;
     color: white;
     text-shadow: 10px 10px black;
+}
+
+.levelTitle {
 }

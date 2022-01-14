@@ -23,14 +23,14 @@ export const GameContainer: React.FC<GameContainerProps> = () => {
 
   if (timeUntilGameStart === 0) {
     return (
-      <Box style={{width: '100vw', height: '100vh'}}>
-        <h1>Level {levelId}</h1>
+      <Container>
+        <h1 className={'levelTitle'}>Level {levelId}</h1>
         <Game />
-      </Box>
+      </Container>
     );
   } else {
     return (
-      <div className={'container'} id={'countdown'}>
+      <div className={'container'} style={{height: window.innerHeight, width: window.innerWidth}} id={'countdown'}>
         <h1 id={'countdownText'}>{timeUntilGameStart}</h1>
       </div>
     );
