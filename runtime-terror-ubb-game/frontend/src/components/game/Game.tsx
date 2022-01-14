@@ -8,27 +8,65 @@ import { generateProjectiles } from '../../utils/Projectiles/generateProjectiles
 const Game = () => {
   const [projectilesWave1, setProjectilesWave1] = useState<IProjectile[]>([]);
   const [projectilesWave2, setProjectilesWave2] = useState<IProjectile[]>([]);
+  const [projectilesWave3, setProjectilesWave3] = useState<IProjectile[]>([]);
+  const [projectilesWave4, setProjectilesWave4] = useState<IProjectile[]>([]);
+  const [projectilesWave5, setProjectilesWave5] = useState<IProjectile[]>([]);
+  const [projectilesWave6, setProjectilesWave6] = useState<IProjectile[]>([]);
+  const [projectilesWave7, setProjectilesWave7] = useState<IProjectile[]>([]);
+  const [projectilesWave8, setProjectilesWave8] = useState<IProjectile[]>([]);
+  const [projectilesWave9, setProjectilesWave9] = useState<IProjectile[]>([]);
   const playerRef = useRef<any>(null);
   const { levelId } = useParams();
   const [timeUntilGameStart, setTimeUntilGameStart] = useState(3);
 
-  useEffect(() => {
-    setProjectilesWave1(generateProjectiles(8, 0));
-    setProjectilesWave2(generateProjectiles(8, 2500));
-    // setProjectilesWave3(generateProjectiles(50, 5000));
-  }, []);
+  // useEffect(() => {
+  //   setProjectilesWave1(generateProjectiles(10, 0));
+  //   setProjectilesWave2(generateProjectiles(10, 0));
+  //   // setProjectilesWave3(generateProjectiles(50, 0));
+  //   // setProjectilesWave4(generateProjectiles(50, 0));
+  //   // setProjectilesWave2(generateProjectiles(50, 0));
+  //   // setProjectilesWave2(generateProjectiles(50, 0));
+  //   // setProjectilesWave2(generateProjectiles(50, 0));
+  //   // setProjectilesWave2(generateProjectiles(50, 0));
+  //   // setProjectilesWave3(generateProjectiles(50, 5000));
+  // }, []);
+
+  const cevaceva = () => {
+    setProjectilesWave1(generateProjectiles(1, 0));
+    setProjectilesWave2(generateProjectiles(1, 1000));
+    setProjectilesWave3(generateProjectiles(1, 2000));
+    setProjectilesWave4(generateProjectiles(1, 3000));
+    setProjectilesWave5(generateProjectiles(1, 4000));
+    setProjectilesWave6(generateProjectiles(1, 5000));
+    setProjectilesWave7(generateProjectiles(1, 6000));
+    setProjectilesWave8(generateProjectiles(1, 7000));
+    setProjectilesWave9(generateProjectiles(1, 8000));
+  };
 
   useEffect(() => {
-    // setInterval(() => {
-    //   setProjectilesWave1(generateProjectiles(8));
-    // }, 19800);
+    // 2 secunde - fast
+    // 4 secunde - normal - 12000
+    // 6 secunde - easy
+    cevaceva();
     setInterval(() => {
-      setProjectilesWave1(generateProjectiles(8, 0));
-    }, 13800);
-    setInterval(() => {
-      setProjectilesWave2(generateProjectiles(8, 2500));
-    }, 24000);
-  }, [projectilesWave1, projectilesWave2]);
+      // setTimeout(() => {}, []);
+      cevaceva();
+      // const newProjectile = generateProjectiles(1, 0)[0];
+      // setProjectilesWave1([])
+    }, 12000);
+  }, []);
+
+  // useEffect(() => {
+  //   //   // setInterval(() => {
+  //   //   //   setProjectilesWave1(generateProjectiles(8));
+  //   //   // }, 19800);
+  //   setInterval(() => {
+  //     setProjectilesWave1(generateProjectiles(8, 0));
+  //   }, 14000);
+  //   setInterval(() => {
+  //     setProjectilesWave2(generateProjectiles(8, 2500));
+  //   }, 24000);
+  // }, [projectilesWave1, projectilesWave2]);
 
   useEffect(() => {
     //    Facem un countdown
@@ -43,28 +81,23 @@ const Game = () => {
 
   function isCollide(a: any, b: any) {
     return !(
-        ((a.y + a.height) < (b.y)) ||
-        (a.y > (b.y + b.height)) ||
-        ((a.x + a.width) < b.x) ||
-        (a.x > (b.x + b.width))
+      a.y + a.height < b.y ||
+      a.y > b.y + b.height ||
+      a.x + a.width < b.x ||
+      a.x > b.x + b.width
     );
   }
 
-  const collision = () => {
-    if (playerRef.current) {
-      console.log(playerRef.current.clientHeight);
-      // console.log(playerRef.current.clientX);
-      console.log(playerRef.current.getBoundingClientRect());
+  const handleCollision = (projectileRef: any) => {
+    if (projectileRef.current && playerRef.current) {
+      console.log(
+        isCollide(
+          projectileRef.current.getBoundingClientRect(),
+          playerRef.current.getBoundingClientRect()
+        )
+      );
     }
-  }
-
-  collision();
-  
- const handleCollision = (projectileRef: any) => {
-   if (projectileRef.current && playerRef.current) {
-     console.log(isCollide(projectileRef.current.getBoundingClientRect(), playerRef.current.getBoundingClientRect()))
-  }
- }
+  };
   if (timeUntilGameStart === 0) {
     //Jocul se desfasoara aici
     return (
@@ -84,6 +117,83 @@ const Game = () => {
           ))}
         {projectilesWave2 &&
           projectilesWave2.map((projectile) => (
+            <Projectile
+              spawnAfter={projectile.spawnAfter}
+              speed={projectile.speed}
+              positionY={projectile.positionY}
+              type={projectile.type}
+              key={Math.random()}
+              handleCollision={handleCollision}
+            />
+          ))}
+        {projectilesWave3 &&
+          projectilesWave3.map((projectile) => (
+            <Projectile
+              spawnAfter={projectile.spawnAfter}
+              speed={projectile.speed}
+              positionY={projectile.positionY}
+              type={projectile.type}
+              key={Math.random()}
+              handleCollision={handleCollision}
+            />
+          ))}
+        {projectilesWave4 &&
+          projectilesWave4.map((projectile) => (
+            <Projectile
+              spawnAfter={projectile.spawnAfter}
+              speed={projectile.speed}
+              positionY={projectile.positionY}
+              type={projectile.type}
+              key={Math.random()}
+              handleCollision={handleCollision}
+            />
+          ))}
+        {projectilesWave5 &&
+          projectilesWave5.map((projectile) => (
+            <Projectile
+              spawnAfter={projectile.spawnAfter}
+              speed={projectile.speed}
+              positionY={projectile.positionY}
+              type={projectile.type}
+              key={Math.random()}
+              handleCollision={handleCollision}
+            />
+          ))}
+        {projectilesWave6 &&
+          projectilesWave6.map((projectile) => (
+            <Projectile
+              spawnAfter={projectile.spawnAfter}
+              speed={projectile.speed}
+              positionY={projectile.positionY}
+              type={projectile.type}
+              key={Math.random()}
+              handleCollision={handleCollision}
+            />
+          ))}
+        {projectilesWave7 &&
+          projectilesWave7.map((projectile) => (
+            <Projectile
+              spawnAfter={projectile.spawnAfter}
+              speed={projectile.speed}
+              positionY={projectile.positionY}
+              type={projectile.type}
+              key={Math.random()}
+              handleCollision={handleCollision}
+            />
+          ))}
+        {projectilesWave8 &&
+          projectilesWave8.map((projectile) => (
+            <Projectile
+              spawnAfter={projectile.spawnAfter}
+              speed={projectile.speed}
+              positionY={projectile.positionY}
+              type={projectile.type}
+              key={Math.random()}
+              handleCollision={handleCollision}
+            />
+          ))}
+        {projectilesWave9 &&
+          projectilesWave9.map((projectile) => (
             <Projectile
               spawnAfter={projectile.spawnAfter}
               speed={projectile.speed}

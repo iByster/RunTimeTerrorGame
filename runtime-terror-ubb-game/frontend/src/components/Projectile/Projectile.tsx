@@ -14,14 +14,14 @@ export const Projectile: React.FC<IProjectile> = ({
   spawnAfter,
   speed,
   type,
-  handleCollision
+  handleCollision,
 }) => {
   const [projectileAnimation, setProjectileAnimation] = useState<string>('');
 
-  const pjRef = createRef<any>()
+  const pjRef = createRef<any>();
   const constructSpeedClass = () => {
-    return `projectile-spawn-${speed}`
-  }
+    return `projectile-spawn-${speed}`;
+  };
 
   useEffect(() => {
     spawnProjectile();
@@ -29,15 +29,21 @@ export const Projectile: React.FC<IProjectile> = ({
 
   const spawnProjectile = () => {
     setTimeout(() => {
-        setProjectileAnimation(constructSpeedClass());
+      setProjectileAnimation(constructSpeedClass());
     }, spawnAfter);
   };
 
   setInterval(() => {
-    if(handleCollision) {
-      handleCollision(pjRef)
+    if (handleCollision) {
+      handleCollision(pjRef);
     }
-  }, 500)
+  }, 500);
 
- return <div ref={pjRef} className={`projectile ${projectileAnimation} ${type}`} style={{ left: positionY }}></div>;
+  return projectileAnimation ? (
+    <div
+      ref={pjRef}
+      className={`projectile ${projectileAnimation} ${type}`}
+      style={{ left: positionY }}
+    ></div>
+  ) : <></>;
 };
