@@ -21,6 +21,21 @@ public class PlayerService {
         }
     }
 
+    public List<Player> findAllPlayersByScore(){
+        try{
+            List<Player> players = playerRepository.findAll();
+            Collections.sort(players, new Comparator<Player>() {
+                @Override
+                public int compare(Player p1, Player p1) {
+                    return p2.getScore().compareTo(p2.getScore());
+                }
+            });
+            return players;
+        } catch (EntityNotFoundException exception) {
+            return null;
+        }
+    }
+
     public Player updatePlayerScore(String username, Long score) {
         try {
             Player p = playerRepository.getOne(username);
