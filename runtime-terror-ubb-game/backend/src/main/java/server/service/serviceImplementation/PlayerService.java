@@ -39,7 +39,8 @@ public class PlayerService {
     public Player updatePlayerScore(String username, Long score) {
         try {
             Player p = playerRepository.getOne(username);
-            p.setScore(score);
+            if(p.getScore() < score)
+                p.setScore(score);
             return playerRepository.save(p);
         } catch (EntityNotFoundException exception) {
             return null;
