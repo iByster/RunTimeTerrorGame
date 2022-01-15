@@ -1,56 +1,25 @@
 import { Container, Box } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { withNavbar } from '../../decorators/withNavbar';
 import { LeaderBoardHeader } from './LeaderBoardHeader/LeaderBoardHeader';
 import { LeaderBoardItem } from './LeaderBoardItem/LeaderBoardItem';
+import { Player } from '../../controllers/player/PlayerEntity';
+import PlayerController from "../../controllers/player/PlayerController";
 
 interface LeaderBoardProps {}
 
 const LeaderBoard: React.FC<LeaderBoardProps> = ({}) => {
-  let mock = [
-    {
-      profileImg: '',
-      username: 'alexxxxx',
-      score: 1000000,
-      maxLvl: 4,
-      rank: 1,
-    },
-    {
-      profileImg: '',
-      username: 'BOSS23',
-      score: 9999,
-      rank: 2,
-      maxLvl: 3,
-    },
-    {
-      profileImg: '',
-      username: 'WOwLol',
-      score: 5123,
-      maxLvl: 2,
-      rank: 3,
-    },
-    {
-      profileImg: '',
-      username: 'Georgel',
-      score: 3456,
-      maxLvl: 1,
-      rank: 4,
-    },
-    {
-      profileImg: '',
-      username: 'alex',
-      score: 100,
-      maxLvl: 4,
-      rank: 5,
-    },
-    {
-      profileImg: '',
-      username: 'alex',
-      score: 100,
-      maxLvl: 4,
-      rank: 6,
-    },
-  ];
+  const [players, setPlayers] = useState<Player[]>();
+  const playerController = new PlayerController();
+  
+  useEffect(() => {
+    const init = async () => {
+      const playersRes = await playerController.getPlayersScore();
+      setPlayers(playersRes);
+    }
+
+    init();
+  }, []);
 
   return (
     <Container maxWidth="md">
@@ -62,8 +31,8 @@ const LeaderBoard: React.FC<LeaderBoardProps> = ({}) => {
           width: '100%',
         }}
       >
-        {mock.map((user) => (
-          <LeaderBoardItem user={user} />
+        {players && players.map((user, index) => (
+          <LeaderBoardItem user={user} rank={index} key={user.username}/>
         ))}
       </Box>
     </Container>

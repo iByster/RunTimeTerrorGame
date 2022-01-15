@@ -1,11 +1,9 @@
-
 import { json, status } from '../../utils/restUtils';
-
 
 const SERVER_BASE_URL = 'http://127.0.0.1:3001';
 
 export default class PlayerController {
-  updatePlayerScore(username: string, score:number) {
+  updatePlayerScore(username: string, score: number) {
     const myHeaders = new Headers();
     myHeaders.append('Accept', 'application/json');
     myHeaders.append('Content-Type', 'application/json');
@@ -14,7 +12,7 @@ export default class PlayerController {
       method: 'PUT',
       headers: myHeaders,
       mode: 'cors' as RequestMode,
-      body: JSON.stringify({username, score}),
+      body: JSON.stringify({ username: username, score: score }),
     };
 
     const scoreUrl = SERVER_BASE_URL + '/updateScore';
@@ -26,6 +24,7 @@ export default class PlayerController {
         console.log('Request succeeded with JSON response', data);
         return data;
       })
+      .catch((e) => console.log(e));
   }
 
   getPlayersScore() {
@@ -48,5 +47,6 @@ export default class PlayerController {
         console.log('Request succeeded with JSON response', data);
         return data;
       })
+      .catch((e) => console.log(e));
   }
 }
