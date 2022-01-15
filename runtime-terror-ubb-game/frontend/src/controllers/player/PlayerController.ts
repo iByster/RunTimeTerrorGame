@@ -14,7 +14,7 @@ export default class PlayerController {
           method: 'POST',
           headers: myHeaders,
           mode: 'cors' as RequestMode,
-          body: JSON.stringify(Player),
+          body: JSON.stringify(player),
         };
     
         const registerUrl = SERVER_BASE_URL + '/createPlayer';
