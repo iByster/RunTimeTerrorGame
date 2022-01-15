@@ -25,25 +25,26 @@ export default class PlayerController {
             console.log('Request succeeded with JSON response', data);
             return data;
           })
+          .catch(e => console.log(e));
       }
 
   updatePlayerScore(username: string, score:number) {
     const myHeaders = new Headers();
     myHeaders.append('Accept', 'application/json');
-    myHeaders.append('Content-Type', 'application/json');
+    // myHeaders.append('Content-Type', 'application/json');
 
-    const newPlayer = new Player(username, score, '', '');
+    // const newPlayer = new Player(username, score, '', '');
 
     const antet = {
       method: 'PUT',
       headers: myHeaders,
       mode: 'cors' as RequestMode,
-      body: JSON.stringify(newPlayer),
+      // body: JSON.stringify(newPlayer),
     };
 
     console.log(antet);
 
-    const scoreUrl = SERVER_BASE_URL + '/updateScore';
+    const scoreUrl = SERVER_BASE_URL + `/updateScore?username=${username}&score=${score}`;
 
     return fetch(scoreUrl, antet)
       .then(status)
