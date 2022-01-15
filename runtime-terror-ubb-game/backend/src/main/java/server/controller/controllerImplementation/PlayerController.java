@@ -17,4 +17,8 @@ public class PlayerController {
         return playerService.updatePlayerScore(username, score);
     }
 
+    @PostMapping("/playerScores")
+    public Player getPlayersScore() {
+        return playerService.findAllPlayersByScore();
+    }
 }
