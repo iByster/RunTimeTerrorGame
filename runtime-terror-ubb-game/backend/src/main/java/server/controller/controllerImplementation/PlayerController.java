@@ -9,7 +9,7 @@ import server.service.serviceImplementation.PlayerService;
 import server.entities.Token;
 
 import java.util.List;
-
+@CrossOrigin
 @RestController
 public class PlayerController {
     @Autowired
