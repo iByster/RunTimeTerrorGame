@@ -1,12 +1,14 @@
 package server.controller.controllerImplementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import server.entities.Player;
 import server.service.serviceImplementation.PlayerService;
 import server.entities.Token;
+
+import java.util.List;
 
 @RestController
 public class PlayerController {
@@ -14,21 +16,22 @@ public class PlayerController {
     private PlayerService playerService;
 
     @PostMapping("/createPlayer")
-    public Player updatePlayerScore(@RequestBody Player player) {
-        Player fromRepository = PlayerService.add(player);
+    public ResponseEntity<?> createPlayer(@RequestBody Player player) {
+        Player fromRepository = playerService.add(player);
         if (fromRepository == null)
-            return new Token("");
+            return new ResponseEntity<String>("User not found", HttpStatus.BAD_REQUEST);
         else
-            return new Token(player.getUsername());
+            return new ResponseEntity<String>("Nicee", HttpStatus.OK);
+
     }
 
-    @PostMapping("/updateScore")
+    @PutMapping("/updateScore")
     public Player updatePlayerScore(@RequestBody String username, Long score) {
         return playerService.updatePlayerScore(username, score);
     }
 
-    @PostMapping("/playerScores")
-    public Player getPlayersScore() {
+    @GetMapping("/playerScores")
+    public List<Player> getPlayersScore() {
         return playerService.findAllPlayersByScore();
     }
 }

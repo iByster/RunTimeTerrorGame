@@ -1,5 +1,5 @@
 import { json, status } from '../../utils/restUtils';
-import Player from './PlayerEntity';
+import { Player } from './PlayerEntity';
 
 const SERVER_BASE_URL = 'http://127.0.0.1:3001';
 
@@ -32,12 +32,16 @@ export default class PlayerController {
     myHeaders.append('Accept', 'application/json');
     myHeaders.append('Content-Type', 'application/json');
 
+    const newPlayer = new Player(username, score, '', '');
+
     const antet = {
       method: 'PUT',
       headers: myHeaders,
       mode: 'cors' as RequestMode,
-      body: JSON.stringify({ username: username, score: score }),
+      body: JSON.stringify(newPlayer),
     };
+
+    console.log(antet);
 
     const scoreUrl = SERVER_BASE_URL + '/updateScore';
 
