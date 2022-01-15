@@ -3,6 +3,7 @@ package server.controller.controllerImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 import server.entities.Player;
 import server.service.serviceImplementation.PlayerService;
@@ -26,7 +27,7 @@ public class PlayerController {
     }
 
     @PutMapping("/updateScore")
-    public Player updatePlayerScore(@RequestBody String username, Long score) {
+    public Player updatePlayerScore(@RequestParam String username, @RequestParam Long score) {
         return playerService.updatePlayerScore(username, score);
     }
 
