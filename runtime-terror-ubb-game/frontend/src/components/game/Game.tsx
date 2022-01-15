@@ -1,41 +1,86 @@
-import {useParams} from "react-router-dom";
-import "./Game.css";
-import {Player} from "../player/Player";
-import {useEffect, useRef, useState} from "react";
+import { Box } from '@mui/system';
+import React, {
+  createContext, forwardRef,
+  useContext,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState
+} from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import useInterval from '../../hooks/useInterval';
+import { usePlayerContext } from '../GameContainer/GameContainer';
+import Player from '../player/Player';
+import './Game.css';
 
-const Game = ()=>
-{
-    const {levelId} = useParams();
-    const [timeUntilGameStart, setTimeUntilGameStart] = useState(3);
-    useEffect(()=>
-    {
-        //    Facem un countdown
-        const countdownInterval = setInterval(()=>
-        {
-            if(timeUntilGameStart > 0)
-            {
-                setTimeUntilGameStart(timeUntilGameStart - 1);
-                console.log("Ceva");
-            }
-        }, 1000);
-        return ()=>clearInterval(countdownInterval);
-    }, [timeUntilGameStart]);
-    if(timeUntilGameStart===0)
-    {
-        //Jocul se desfasoara aici
-        return (
-            <div className={"container"}>
-                <h1>Level {levelId}</h1>
-                <Player player={{life: 100, items: []}}/>
-            </div>
-        );
-    }
-    else
-    {
-        return (<div className={"container"} id={"countdown"}>
-            <h1 id={"countdownText"}>{timeUntilGameStart}</h1>
-        </div>);
-    }
+interface DeadContextInterface {
+  dead: boolean;
 }
+
+export const DeadContext = createContext<DeadContextInterface>(
+  {} as DeadContextInterface
+);
+
+export function useDeadContext() {
+  return useContext(DeadContext);
+}
+
+const Game = forwardRef((props, ref) => {
+  const playerRef = useRef<any>(null);
+  const [userLife, setUserLife] = useState(100);
+  const [userScore, setUserScore] = useState(0);
+  const [isPlayerDead, setIsPlayerDead] = useState(false);
+  const playRefContext = usePlayerContext();
+  const { levelId } = useParams();
+  const navigate = useNavigate();
+
+  useImperativeHandle(ref, () => ({
+    damageTaken() {
+      if (userLife > 0) {
+        setUserLife(userLife - 10);
+      }
+    },
+  }));
+
+  useInterval(() => {
+    if (!isPlayerDead) {
+      setUserScore(userScore + 100);
+    }
+  }, 1000);
+
+  useEffect(() => {
+    if (userLife === 0) {
+      // * game over
+      setIsPlayerDead(true);
+
+      setTimeout(() => {
+        navigate("/levels");
+      }, 5000)
+    }
+  }, [userLife, navigate]);
+
+  useEffect(() => {
+    if (playerRef?.current) {
+      playRefContext.playerRef(playerRef);
+    } else {
+      return;
+    }
+  }, [playerRef, playRefContext]);
+
+  //Jocul se desfasoara aici
+  return (
+    <div>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <label>Life: {userLife}</label>
+        <h1>{!isPlayerDead ? `Level ${levelId}` : `Game Over`}</h1>
+
+        <label>Score: {userScore}</label>
+      </Box>
+      <DeadContext.Provider value={{ dead: isPlayerDead }}>
+        <Player ref={playerRef} />
+      </DeadContext.Provider>
+    </div>
+  );
+});
 
 export default Game;
