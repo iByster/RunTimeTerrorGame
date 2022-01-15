@@ -1,9 +1,9 @@
 import React from 'react';
-import { Projectile } from '../Projectile/Projectile';
+import { useDeadContext } from '../game/Game';
 import './Player.css';
 
 interface PlayerProps {
-  player: {
+  player?: {
     life: number;
     items: Array<string>;
   };
@@ -59,7 +59,8 @@ function move(e: any) {
 }
 
 const Player: React.FC<PlayerProps> = React.forwardRef<HTMLDivElement>((props, ref) => {
-  // return <Projectile />
+  const deadContext = useDeadContext();
+  
   return (
     <div
       className={`background`}
@@ -67,7 +68,7 @@ const Player: React.FC<PlayerProps> = React.forwardRef<HTMLDivElement>((props, r
       tabIndex={0}
       ref={(input) => input && input.focus()}
     >
-      <div ref={ref} className={`player`}></div>
+      <div ref={ref} className={`${deadContext.dead ? 'player-dead' : 'player'}`}></div>
     </div>
   );
 });

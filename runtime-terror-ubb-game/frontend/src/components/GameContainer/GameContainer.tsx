@@ -1,5 +1,12 @@
 import { Box, Container } from '@mui/material';
-import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
+import React, {
+  createContext,
+  RefObject,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useParams } from 'react-router-dom';
 import { generateProjectiles } from '../../utils/Projectiles/generateProjectiles';
 import Game from '../game/Game';
@@ -9,7 +16,7 @@ import './GameContainer.css';
 interface GameContainerProps {}
 
 interface PlayerContextInterface {
-  life: number;
+  playerRef: any;
 }
 
 export const PlayerContext = createContext<PlayerContextInterface>(
@@ -21,8 +28,8 @@ export function usePlayerContext() {
 }
 
 export const GameContainer: React.FC<GameContainerProps> = () => {
-  const { levelId } = useParams();
-  const playerRef = useRef<any>(null);
+  const [playerRef, setPlayerRef] = useState<React.MutableRefObject<any>>();
+  // const [playerRefState, setPlayerRefState] = useState<any>(playerRef);
   const [timeUntilGameStart, setTimeUntilGameStart] = useState(3);
   const [projectilesWave1, setProjectilesWave1] = useState<IProjectile[]>([]);
   const [projectilesWave2, setProjectilesWave2] = useState<IProjectile[]>([]);
@@ -33,6 +40,7 @@ export const GameContainer: React.FC<GameContainerProps> = () => {
   const [projectilesWave7, setProjectilesWave7] = useState<IProjectile[]>([]);
   const [projectilesWave8, setProjectilesWave8] = useState<IProjectile[]>([]);
   const [projectilesWave9, setProjectilesWave9] = useState<IProjectile[]>([]);
+  const gameRef = useRef<any>(null);
 
   const cevaceva = () => {
     setProjectilesWave1(generateProjectiles(1, 0));
@@ -68,14 +76,34 @@ export const GameContainer: React.FC<GameContainerProps> = () => {
     );
   }
 
+  const getPlayerRef = (playerRef: any) => {
+    console.log(playerRef);
+    if (playerRef) {
+      setPlayerRef(playerRef);
+    }
+  };
+
   const handleCollision = (projectileRef: any) => {
-    if (projectileRef.current && playerRef.current) {
-      console.log(
-        isCollide(
-          projectileRef.current.getBoundingClientRect(),
-          playerRef.current.getBoundingClientRect()
-        )
-      );
+    if (playerRef) {
+      if (projectileRef.current && playerRef.current) {
+        console.log(
+          isCollide(
+            projectileRef.current.getBoundingClientRect(),
+            playerRef.current.getBoundingClientRect()
+          )
+        );
+        if (
+          isCollide(
+            projectileRef.current.getBoundingClientRect(),
+            playerRef.current.getBoundingClientRect()
+          )
+        ) {
+          console.log('hit');
+          gameRef.current.damageTaken();
+        }
+      }
+    } else {
+      console.log('no player ref');
     }
   };
 
@@ -93,8 +121,9 @@ export const GameContainer: React.FC<GameContainerProps> = () => {
   if (timeUntilGameStart === 0) {
     return (
       <Container>
-        <h1 className={'levelTitle'}>Level {levelId}</h1>
-        <Game />
+        <PlayerContext.Provider value={{ playerRef: getPlayerRef }}>
+          <Game ref={gameRef} />
+        </PlayerContext.Provider>
         {projectilesWave1 &&
           projectilesWave1.map((projectile) => (
             <Projectile
