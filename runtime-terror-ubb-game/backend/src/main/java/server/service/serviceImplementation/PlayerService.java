@@ -6,6 +6,9 @@ import server.entities.Player;
 import server.repository.PlayerIRepository;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 @Service
 public class PlayerService {
@@ -24,10 +27,10 @@ public class PlayerService {
     public List<Player> findAllPlayersByScore(){
         try{
             List<Player> players = playerRepository.findAll();
-            Collections.sort(players, new Comparator<Player>() {
+            players.sort(new Comparator<Player>() {
                 @Override
-                public int compare(Player p1, Player p1) {
-                    return p2.getScore().compareTo(p2.getScore());
+                public int compare(Player p1, Player p2) {
+                    return p1.getScore().compareTo(p2.getScore());
                 }
             });
             return players;

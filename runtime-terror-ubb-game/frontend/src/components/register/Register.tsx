@@ -7,6 +7,8 @@ import Logo from "../../img/logo-cs.png";
 import UserController from "../../controllers/user/UserController";
 import User from "../../controllers/user/UserEntity";
 import { useAuthContext } from "../../providers/AuthProvider/AuthProvider";
+import PlayerController from "../../controllers/player/PlayerController";
+import { Player } from "../../controllers/player/PlayerEntity";
 
 function Register() {
     const [usernameError, setUsernameError] = useState('');
@@ -90,8 +92,12 @@ function Register() {
                 if (!anyError.current) {
                     try {
                         const controller = new UserController();
+                        const playerController = new PlayerController();
                         const user = new User(username, password, email, '', 0);
+                        const newPlayer = new Player(username, 0, '', '');
+                        await playerController.createPlayer(newPlayer);
                         const token = await controller.register(user);
+                        await 
                         login({username, token: token.string});
                         Swal.fire({
                             title: 'Account created successfully!',

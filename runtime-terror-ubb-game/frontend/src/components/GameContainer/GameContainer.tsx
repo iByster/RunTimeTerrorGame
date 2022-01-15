@@ -77,7 +77,7 @@ export const GameContainer: React.FC<GameContainerProps> = () => {
   }
 
   const getPlayerRef = (playerRef: any) => {
-    console.log(playerRef);
+    // console.log(playerRef);
     if (playerRef) {
       setPlayerRef(playerRef);
     }
@@ -86,12 +86,6 @@ export const GameContainer: React.FC<GameContainerProps> = () => {
   const handleCollision = (projectileRef: any) => {
     if (playerRef) {
       if (projectileRef.current && playerRef.current) {
-        console.log(
-          isCollide(
-            projectileRef.current.getBoundingClientRect(),
-            playerRef.current.getBoundingClientRect()
-          )
-        );
         if (
           isCollide(
             projectileRef.current.getBoundingClientRect(),

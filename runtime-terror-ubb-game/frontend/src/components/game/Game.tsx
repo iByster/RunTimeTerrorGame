@@ -1,14 +1,17 @@
 import { Box } from '@mui/system';
 import React, {
-  createContext, forwardRef,
+  createContext,
+  forwardRef,
   useContext,
   useEffect,
   useImperativeHandle,
   useRef,
-  useState
+  useState,
 } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import PlayerController from '../../controllers/player/PlayerController';
 import useInterval from '../../hooks/useInterval';
+import { useAuthContext } from '../../providers/AuthProvider/AuthProvider';
 import { usePlayerContext } from '../GameContainer/GameContainer';
 import Player from '../player/Player';
 import './Game.css';
@@ -33,6 +36,8 @@ const Game = forwardRef((props, ref) => {
   const playRefContext = usePlayerContext();
   const { levelId } = useParams();
   const navigate = useNavigate();
+  const playerController = new PlayerController();
+  const userContext = useAuthContext();
 
   useImperativeHandle(ref, () => ({
     damageTaken() {
@@ -53,11 +58,16 @@ const Game = forwardRef((props, ref) => {
       // * game over
       setIsPlayerDead(true);
 
+      playerController.updatePlayerScore(
+        userContext.userProfile.username,
+        userScore
+      );
+
       setTimeout(() => {
-        navigate("/levels");
-      }, 5000)
+        navigate('/levels');
+      }, 5000);
     }
-  }, [userLife, navigate]);
+  }, [userLife, navigate, playerController, userContext, userScore]);
 
   useEffect(() => {
     if (playerRef?.current) {

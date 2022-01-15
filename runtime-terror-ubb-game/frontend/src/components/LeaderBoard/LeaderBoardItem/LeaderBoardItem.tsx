@@ -6,24 +6,22 @@ import style from './LeaderBoardItem.module.css';
 
 interface LeaderBoardItemProps {
   user: {
-    profileImg: string;
     username: string;
     score: number;
-    maxLvl: number;
-    rank: number;
+    gender: string;
+    score_timestamp: string;
   };
+  rank: any;
 }
 
-export const LeaderBoardItem: React.FC<LeaderBoardItemProps> = ({ user }) => {
-  const { rank } = user;
-
+export const LeaderBoardItem: React.FC<LeaderBoardItemProps> = ({ user, rank }) => {
   const rankFrameColor =
     // gold
-    (rank === 1 && '#FFD700') ||
+    (rank === 0 && '#FFD700') ||
     // silver
-    (rank === 2 && '#999B9B') ||
+    (rank === 1 && '#999B9B') ||
     // bronze
-    (rank === 3 && '#CD7F32') ||
+    (rank === 2 && '#CD7F32') ||
     // blue
     '#004174';
 
@@ -50,7 +48,7 @@ export const LeaderBoardItem: React.FC<LeaderBoardItemProps> = ({ user }) => {
         >
           <Avatar
             alt={'Remy Sharp'}
-            src={user.profileImg}
+            // src={user.profileImg}
             style={{
               width: 80,
               height: 80,
@@ -68,7 +66,7 @@ export const LeaderBoardItem: React.FC<LeaderBoardItemProps> = ({ user }) => {
         gap: '40px'
       }}> */}
         <p className={style['leader-board-item-p']} style={{ marginLeft: 40 }}>
-          {user.maxLvl}
+          1
         </p>
       </Box>
 
