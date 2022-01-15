@@ -45,4 +45,13 @@ public class PlayerService {
             return null;
         }
     }
+
+    public Player add(Player player) {
+        try {
+            Player p = playerRepository.save(player);
+            return p;
+        } catch (EntityNotFoundException exception) {
+            return null;
+        }
+    }
 }
