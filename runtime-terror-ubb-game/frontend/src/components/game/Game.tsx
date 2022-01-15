@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom';
 import './Game.css';
 import Player from '../player/Player';
-import { createRef, useEffect, useRef, useState } from 'react';
+import React, { createRef, useEffect, useRef, useState } from 'react';
 import { IProjectile, Projectile } from '../Projectile/Projectile';
 import { generateProjectiles } from '../../utils/Projectiles/generateProjectiles';
 
-const Game = () => {
+const Game = React.memo(() => {
   const [projectilesWave1, setProjectilesWave1] = useState<IProjectile[]>([]);
   const [projectilesWave2, setProjectilesWave2] = useState<IProjectile[]>([]);
   const [projectilesWave3, setProjectilesWave3] = useState<IProjectile[]>([]);
@@ -91,7 +91,7 @@ const Game = () => {
     return (
       <div >
         <Player ref={playerRef} player={{ life: 100, items: [] }} />
-        {projectilesWave1 &&
+        {/* {projectilesWave1 &&
           projectilesWave1.map((projectile) => (
             <Projectile
               spawnAfter={projectile.spawnAfter}
@@ -189,10 +189,10 @@ const Game = () => {
               key={Math.random()}
               handleCollision={handleCollision}
             />
-          ))}
+          ))} */}
       </div>
     );
   
-};
+});
 
 export default Game;
