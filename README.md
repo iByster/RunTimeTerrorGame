@@ -37,6 +37,7 @@ Acest joc a fost dezvoltat de:
 - Gane Alexandru - project manager & frontend dev
 - Mateaș Andrei - developer
 - Irimiciuc Andreea - backend dev
+- Chimpan Alex - frontend dev
 - Măduța Adrian - frontend dev
 - Șapcă Cătălina - backend dev
 - Cocora Lorena - grafician
